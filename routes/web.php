@@ -10,7 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+    // route to show the login form
+    Route::get('login', array('uses' => 'HomeController@showLogin'));
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    // route to process the form
+    Route::post('login', array('uses' => 'HomeController@doLogin'));
+
+
+    Route::group([
+            'prefix'    => 'dashboard',
+        ], function() {
+
+    }
+
+    );
