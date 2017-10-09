@@ -21,6 +21,7 @@
             'prefix'    => 'dashboard',
         ], function() {
 
+        Route::get('logout', array('uses' => 'HomeController@logout'));
 
 
 

@@ -20,13 +20,13 @@ class HomeController extends Controller
 
     public function showLogin()
     {
-        // show the login form
-        return View('layouts.login');
+            // show the login form
+             return View('layouts.login');
     }
 
     public function doLogin(Request $request)
     {
-        // process the login form
+             // process the login form
 
 			$validator = Validator::make($request->all() , $this->rules);
 
@@ -51,21 +51,29 @@ class HomeController extends Controller
 
                 if (Auth::attempt($userData))
                 {
+                    // Redirect to Dashboard
                     return Redirect::to('dashboard');
-                    // validation successful
-                    // do whatever you want on success
 
                 }
                 else
                 {
-
-                    // validation not successful, send back to form
+                    // validation not successful, send back to form with message
                     Session::flash('message', 'Kindly Check Your Email Or Password Again.');
 
                     return Redirect::to('login');
                 }
             }
 			}
+
+    public function logout(){
+
+            // logout user
+            Auth::logout();
+            // redirect to login page
+            return Redirect::to('login');
+
+
+    }
 
 
 }
