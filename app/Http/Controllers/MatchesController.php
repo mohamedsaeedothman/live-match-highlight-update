@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Roles;
-use App\User;
+use App\Match;
+use App\Team;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class ModeratorsController extends Controller
+class MatchesController extends Controller
 {
-    protected $role;
+    protected $paginationValue;
+    protected $teams;
 
     public function __construct()
     {
-        $this->role = Roles::$moderator;
+        $this->paginationValue = 6;
+        $this->teams = Team::all();
     }
     /**
      * Display a listing of the resource.
@@ -24,9 +25,9 @@ class ModeratorsController extends Controller
      */
     public function index()
     {
-        // retrieve moderators
-        $moderators = User::where('type',$this->role)->paginate(6);
-        return view('layouts.moderator.index')->with('moderators',$moderators);
+        // retrieve teams with pagination
+        $matches = Match::paginate($this->paginationValue);
+        return view('layouts.match.index')->with('matches',$matches);
     }
 
     /**
@@ -37,8 +38,7 @@ class ModeratorsController extends Controller
     public function create()
     {
         // render create page
-        return view('layouts.moderator.create');
-
+        return view('layouts.match.create')->with('teams',$this->teams);
     }
 
     /**
@@ -49,80 +49,81 @@ class ModeratorsController extends Controller
      */
     public function store(Request $request)
     {
+
         // form validation
-        $validator = Validator::make($request->all(), User::getCreateModeratorRules());
+        $validator = Validator::make($request->all(), Match::getRules());
         if($validator->fails()){
             return redirect()->back()->withErrors( $validator->messages())->withInput();
         }
         // if validation pass insert data to my db
-        $user = new User($request->all());
-        $user->password = Hash::make($request->password);
-        $user->type = Roles::$moderator;
-        $user->save();
+        $match = new Match($request->all());
+        $match->save();
         // return back to my view  with success message
-        Session::flash('message', 'Moderator Added Successfully.');
-        return redirect()->to('dashboard/moderators');
+        Session::flash('message', 'Match Added Successfully.');
+        return redirect()->to('dashboard/matches');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Match $match)
     {
-        return view('layouts.moderator.show')->with('moderator',$user);
+        return view('layouts.match.show')->with('match',$match);
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Match $match)
     {
+        return view('layouts.match.edit')->with([
+            'match'=>$match,
+            'teams' => $this->teams
 
-        return view('layouts.moderator.edit')->with('moderator',$user);
+        ]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Match $match)
     {
         // form validation
-        $validator = Validator::make($request->all(), User::getUpdateModeratorRules($user));
+        $validator = Validator::make($request->all(), $match::getRules($match));
         if($validator->fails()){
             return redirect()->back()->withErrors( $validator->messages())->withInput();
         }
         // if validation pass insert data to my db
-        $user->update($request->all());
-        // check if password not empty update it
-        if(!empty($request->password) )
-            $user->password= Hash::make($request->password);
-        $user->save();
-        Session::flash('message', 'Moderator Updated Successfully.');
+        $match->update($request->all());
+        $match->first_team_score=$request->first_team_score;
+        $match->second_team_score=$request->second_team_score;
+        $match->save();
+        Session::flash('message', 'Match Updated Successfully.');
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
+     * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Match $match)
     {
-
-        $user->delete();
-        Session::flash('message', 'Moderator Deleted Successfully.');
+        $match->delete();
+        Session::flash('message', 'Match Deleted Successfully.');
         return redirect()->back();
     }
 }

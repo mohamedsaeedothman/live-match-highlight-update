@@ -33,11 +33,13 @@
         Route::resource('moderators', 'ModeratorsController', ['parameters'=>['moderators'=>'user']]);
         // use parameters param to use dependency injection to inject user model to controller
 
-        // route resource to create read update delete teams
+        // route resource to create  update delete teams
         Route::resource('teams', 'TeamsController', ['parameters'=>['teams'=>'team']]);
         // use parameters param to use dependency injection to inject team model to controller
 
-
+        // route resource to create read update delete match
+        Route::resource('matches', 'MatchesController', ['parameters'=>['matches'=>'match']]);
+        // use parameters param to use dependency injection to inject match model to controller
 
 
     });

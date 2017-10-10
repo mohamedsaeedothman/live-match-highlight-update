@@ -87,7 +87,7 @@ class TeamsController extends Controller
             return redirect()->back()->withErrors( $validator->messages())->withInput();
         }
         // if validation pass insert data to my db
-        $team->name=$request->name;
+        $team->update($request->all());
         $team->save();
         Session::flash('message', 'Team Updated Successfully.');
         return redirect()->back();

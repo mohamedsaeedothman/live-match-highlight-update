@@ -25,7 +25,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class=" treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Moderators</span>
                     <span class="pull-right-container">
@@ -33,12 +33,12 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="{{\Illuminate\Support\Facades\URL::to('dashboard/moderators')}}"><i class="fa fa-list"></i> List All Moderators </a></li>
+                    <li ><a href="{{\Illuminate\Support\Facades\URL::to('dashboard/moderators')}}"><i class="fa fa-list"></i> List All Moderators </a></li>
                     <li><a href="{{\Illuminate\Support\Facades\URL::to('dashboard/moderators/create')}}"><i class="fa fa-plus"></i> Add New Moderator </a></li>
                 </ul>
             </li>
 
-            <li class="active treeview">
+            <li class=" treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Teams</span>
                     <span class="pull-right-container">
@@ -46,8 +46,21 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="{{\Illuminate\Support\Facades\URL::to('dashboard/teams')}}"><i class="fa fa-list"></i> List All Moderators </a></li>
+                    <li ><a href="{{\Illuminate\Support\Facades\URL::to('dashboard/teams')}}"><i class="fa fa-list"></i> List All Moderators </a></li>
                     <li><a href="{{\Illuminate\Support\Facades\URL::to('dashboard/teams/create')}}"><i class="fa fa-plus"></i> Add New Moderator </a></li>
+                </ul>
+            </li>
+
+            <li class=" treeview">
+                <a href="#">
+                    <i class="fa fa-gamepad"></i> <span>Matches</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li ><a href="{{\Illuminate\Support\Facades\URL::to('dashboard/matches')}}"><i class="fa fa-list"></i> List All Matches </a></li>
+                    <li><a href="{{\Illuminate\Support\Facades\URL::to('dashboard/matches/create')}}"><i class="fa fa-plus"></i> Add New Match </a></li>
                 </ul>
             </li>
 
