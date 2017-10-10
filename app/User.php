@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name','last_name', 'email', 'password',
     ];
 
     /**
@@ -26,4 +26,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    // create  rules
+    public static function  getCreateModeratorRules(){
+        return [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:3'
+        ];
+    }
+    // update  rules
+
+    public static function  getUpdateModeratorRules(User $user){
+        return [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email|unique:users,email, '.$user->id,
+            'password' => ''
+
+        ];
+    }
 }

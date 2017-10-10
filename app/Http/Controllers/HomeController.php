@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -17,6 +16,11 @@ class HomeController extends Controller
         'email' => 'required|email', // make sure the email is an actual email
         'password' => 'required|alphaNum|min:3' // password has to be greater than 3 characters and can only be alphanumeric and);
     ];
+
+    public function index()
+    {
+        return view('layouts.index');
+    }
 
     public function showLogin()
     {
