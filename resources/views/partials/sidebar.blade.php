@@ -25,6 +25,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
+            @if(\Illuminate\Support\Facades\Auth::user()->type == \App\Services\Roles::$admin)
             <li class=" treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Moderators</span>
@@ -37,6 +38,7 @@
                     <li><a href="{{\Illuminate\Support\Facades\URL::to('dashboard/moderators/create')}}"><i class="fa fa-plus"></i> Add New Moderator </a></li>
                 </ul>
             </li>
+            @endif
 
             <li class=" treeview">
                 <a href="#">

@@ -28,10 +28,16 @@
 
         // route to logout user
         Route::get('logout', array('uses' => 'HomeController@logout'));
+        // routes that admin can access
+        Route::group([
+            // put middleware admin here to prevent anyone to access this routes if he does not  authenticated
+            'middleware' => 'admin'
+        ],function(){
+            // route resource to create read update delete moderators
+            Route::resource('moderators', 'ModeratorsController', ['parameters'=>['moderators'=>'user']]);
+            // use parameters param to use dependency injection to inject user model to controller
 
-        // route resource to create read update delete moderators
-        Route::resource('moderators', 'ModeratorsController', ['parameters'=>['moderators'=>'user']]);
-        // use parameters param to use dependency injection to inject user model to controller
+        });
 
         // route resource to create  update delete teams
         Route::resource('teams', 'TeamsController', ['parameters'=>['teams'=>'team']]);
@@ -43,3 +49,6 @@
 
 
     });
+
+    //error message route
+    Route::get('errors/401', array('uses' => 'ErrorsController@get401'));
