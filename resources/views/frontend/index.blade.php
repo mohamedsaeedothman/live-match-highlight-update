@@ -1,38 +1,6 @@
 @extends('frontend.master')
 @section('content')
 
-
-    {{--<h1>New Users</h1>--}}
-
-    {{--<ul>--}}
-        {{--<li v-repeat="user: users">@{{ user }}</li>--}}
-    {{--</ul>--}}
-
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.16/vue.min.js"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>--}}
-    {{--<script src="http://localhost:3000/socket.io/socket.io.js" type="text/javascript"></script>--}}
-
-    {{--<script>--}}
-        {{--var socket = io('http://localhost:3000');--}}
-        {{--new Vue({--}}
-            {{--el: 'body',--}}
-            {{--data: {--}}
-                {{--users: []--}}
-            {{--},--}}
-            {{--ready: function() {--}}
-                {{--socket.on('test-channel:InsertNewComment'.'{{}}', function(data) {--}}
-                    {{--console.log(data);--}}
-                    {{--this.users.push(data.username);--}}
-                {{--}.bind(this));--}}
-            {{--}--}}
-        {{--});--}}
-    {{--</script>--}}
-
-
-
-
-
-
     <div class="matches-container">
 
         <div class="matches-tabs-header">
@@ -43,7 +11,7 @@
 
                 <a href="#tab-1" class="tab-btn  ">Yesterday</a>
 
-                <a href="#tab-2" class="tab-btn ">Today</a>
+                <a href="#tab-2" class="tab-btn  first-active">Today</a>
 
                 <a href="#tab-3" class="tab-btn">Tomorrow</a>
 
@@ -61,9 +29,7 @@
                         <div class="match clickable-element">
                             <div class="team">
                                 {{$match->firstTeam->name}}
-                                <div class="team-logo">
-                                <img src="img/egypt.png" alt="egypt">
-                                </div>
+
                             </div>
 
                             <a href="{{\Illuminate\Support\Facades\URL::to('matches/'.$match->id)}}" class="clickable-anchor"></a>
@@ -78,9 +44,7 @@
                             </div>
 
                             <div class="team">
-                                <div class="team-logo">
-                                <img src="img/saudi.png" alt="saudi arabia">
-                                </div>
+
                                 {{$match->secondTeam->name}}
                             </div>
 
@@ -93,7 +57,7 @@
             </div>
 
 
-            <div id="tab-2" class="tab-pane">
+            <div id="tab-2" class="tab-pane first-active ">
                 <div class="matchs-list">
 
                     @foreach($todayMatches as $match)
@@ -101,9 +65,7 @@
                         <div class="match clickable-element">
                             <div class="team">
                                 {{$match->firstTeam->name}}
-                                <div class="team-logo">
-                                <img src="img/egypt.png" alt="egypt">
-                                </div>
+
                             </div>
 
                             <a href="{{\Illuminate\Support\Facades\URL::to('matches/'.$match->id)}}" class="clickable-anchor"></a>
@@ -118,9 +80,7 @@
                             </div>
 
                             <div class="team">
-                                <div class="team-logo">
-                                <img src="img/saudi.png" alt="saudi arabia">
-                                </div>
+
                                 {{$match->secondTeam->name}}
                             </div>
 
@@ -141,9 +101,7 @@
                         <div class="match clickable-element">
                             <div class="team">
                                 {{$match->firstTeam->name}}
-                                <div class="team-logo">
-                                <img src="img/egypt.png" alt="egypt">
-                                </div>
+
                             </div>
 
                             <a href="{{\Illuminate\Support\Facades\URL::to('matches/'.$match->id)}}" class="clickable-anchor"></a>
@@ -158,9 +116,7 @@
                             </div>
 
                             <div class="team">
-                                <div class="team-logo">
-                                <img src="img/saudi.png" alt="saudi arabia">
-                                </div>
+
                                 {{$match->secondTeam->name}}
                             </div>
 

@@ -29,9 +29,9 @@
                                 <td>{!!  $moderator->first_name." ".$moderator->last_name !!}</td>
                                 <td>{!!  $moderator->email !!}</td>
                                 <td>
-                                    <a  href="{!! \Illuminate\Support\Facades\URL::to('dashboard/moderators/'.$moderator->id.'/edit') !!}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a>
                                     <a  href="{!! \Illuminate\Support\Facades\URL::to('dashboard/moderators/'.$moderator->id) !!}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-search"></span></a>
-                                    {!!  Form::open(['action' => ['ModeratorsController@destroy', $moderator->id],'method'=>'DELETE'])!!}
+                                    <a  href="{!! \Illuminate\Support\Facades\URL::to('dashboard/moderators/'.$moderator->id.'/edit') !!}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a>
+                                    {!!  Form::open(['action' => ['ModeratorsController@destroy', $moderator->id],'method'=>'DELETE','style'=>'display:inline-block'])!!}
                                     <button type="submit"  onclick="return confirm('Are you sure you want to this moderator?');" class="btn btn-default btn-rounded btn-condensed btn-sm" onClick="delete_row('trow_2');"><span class="fa fa-times"></span></button>
                                     {!! Form::close() !!}
                                 </td>

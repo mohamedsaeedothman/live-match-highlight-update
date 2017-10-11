@@ -31,9 +31,9 @@
                                 <td>{!!  $match->secondTeam->name!!}</td>
                                 <td>{!!  \App\Services\MatchStatus::getCurrentStatus($match->status)!!}</td>
                                 <td>
-                                    <a  href="{!! \Illuminate\Support\Facades\URL::to('dashboard/matches/'.$match->id.'/edit') !!}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a>
                                     <a  href="{!! \Illuminate\Support\Facades\URL::to('dashboard/matches/'.$match->id) !!}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-search"></span></a>
-                                    {!!  Form::open(['action' => ['MatchesController@destroy', $match->id],'method'=>'DELETE'])!!}
+                                    <a  href="{!! \Illuminate\Support\Facades\URL::to('dashboard/matches/'.$match->id.'/edit') !!}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a>
+                                    {!!  Form::open(['action' => ['MatchesController@destroy', $match->id],'method'=>'DELETE','style'=>'display:inline-block'])!!}
                                     <button type="submit"  onclick="return confirm('Are you sure you want to this match?');" class="btn btn-default btn-rounded btn-condensed btn-sm" onClick="delete_row('trow_2');"><span class="fa fa-times"></span></button>
                                     {!! Form::close() !!}
                                     @if($match->status == \App\Services\MatchStatus::$NoStart)

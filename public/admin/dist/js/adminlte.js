@@ -12,6 +12,10 @@
 * @license MIT <http://opensource.org/licenses/MIT>
 */
 
+
+
+
+
 // Make sure jQuery has been loaded
 if (typeof jQuery === 'undefined') {
 throw new Error('AdminLTE requires jQuery')
@@ -26,7 +30,8 @@ throw new Error('AdminLTE requires jQuery')
  *         Pass any option as data-option="value"
  */
 +function ($) {
-  'use strict'
+    $(document).ready(function(){
+            'use strict'
 
   var DataKey = 'lte.boxrefresh'
 
@@ -357,7 +362,10 @@ throw new Error('AdminLTE requires jQuery')
       $(this).on('click', this.toggle)
     }
 
-    this.fix()
+    this.fix();
+    setTimeout(function(){
+      this.fix();
+    }, 4000)
     $(window).resize(function () {
       this.fix()
     }.bind(this))
@@ -1124,4 +1132,6 @@ throw new Error('AdminLTE requires jQuery')
     })
   })
 
+
+})
 }(jQuery)

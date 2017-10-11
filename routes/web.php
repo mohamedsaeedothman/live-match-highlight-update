@@ -19,26 +19,7 @@
     // route to get all matches index our website
     Route::get('/', array('uses' => 'FrontendController@index'));
 
-Route::get('/newcommemnt', function(){
 
-    $comment=new \App\Comment();
-    $comment->match_id=1;
-    $comment->type=1;
-    $comment->content="iohqoefhqwoifhqwiofhqwiofhqwiofhqwiofhqwiofhqwoifhqwoifhqwfio";
-    $comment->save();
-
-    $data = [
-        'event' => 'InsertNewComment'.$comment->match_id,
-        'data' => [
-            'match_id' => $comment->match_id,
-            'type' => \App\Services\MatchTypes::getType($comment->type),
-            'created_at' =>$comment->created_at->toDateTimeString() ,
-            'content' => $comment->content,
-            'username' => 'saeed'
-        ]
-    ];
-    Redis::publish('test-channel', json_encode($data));
-});
     // route to show  match comments and details
     Route::get('/matches/{match_id}', array('uses' => 'FrontendController@show'));
 

@@ -32,7 +32,7 @@
                                 <td>{!!  $team->updated_at !!}</td>
                                 <td>
                                     <a  href="{!! \Illuminate\Support\Facades\URL::to('dashboard/teams/'.$team->id.'/edit') !!}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-pencil"></span></a>
-                                    {!!  Form::open(['action' => ['TeamsController@destroy', $team->id],'method'=>'DELETE'])!!}
+                                    {!!  Form::open(['action' => ['TeamsController@destroy', $team->id],'method'=>'DELETE','style'=>'display:inline-block'])!!}
                                     <button type="submit"  onclick="return confirm('Are You Sure  That You Want To Delete This Team?');" class="btn btn-default btn-rounded btn-condensed btn-sm" onClick="delete_row('trow_2');"><span class="fa fa-times"></span></button>
                                     {!! Form::close() !!}
                                 </td>
