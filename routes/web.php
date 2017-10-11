@@ -16,6 +16,11 @@
     // route to process the form
     Route::post('login', array('uses' => 'HomeController@doLogin'));
 
+    // route to get all matches index our website
+    Route::get('/', array('uses' => 'FrontendController@index'));
+    // route to show  match comments and details
+    Route::get('/matches/{match_id}', array('uses' => 'FrontendController@show'));
+
 
     Route::group([
             'prefix'     => 'dashboard',
@@ -59,5 +64,7 @@
 
     });
 
-    //error message route
+    //error 401 message route
     Route::get('errors/401', array('uses' => 'ErrorsController@get401'));
+    //error 404 message route
+    Route::get('errors/404', array('uses' => 'ErrorsController@get404'));
