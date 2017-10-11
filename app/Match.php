@@ -33,7 +33,7 @@ class Match extends Model
 
     public function comments()
     {
-        return $this->hasMany('App\Comment', 'match_id');
+        return $this->hasMany('App\Comment', 'match_id')->orderBy("id",'desc');
     }
 
 

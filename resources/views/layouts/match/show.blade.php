@@ -48,6 +48,8 @@
 
     </div>
     <div class="col-xs-6">
+
+        @if($match->status == \App\Services\MatchStatus::$ongoing)
         {!! Form::open(['url' => 'dashboard/comments', 'method' => 'POST','class'=>'form-horizontal']) !!}
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -133,6 +135,7 @@
         </div>
 
         {!! Form::close() !!}
+            @endif
     </div>
     <div class="col-xs-12">
         <h1 style="padding-bottom: 50px">Comments</h1>
