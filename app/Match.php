@@ -9,6 +9,7 @@ class Match extends Model
     protected $fillable = [
         'first_team','second_team','description','match_date','match_time'
     ];
+
     // create && update rules
     public static function  getRules(){
         return [

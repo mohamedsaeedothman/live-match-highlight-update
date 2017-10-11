@@ -47,6 +47,12 @@
         Route::resource('matches', 'MatchesController', ['parameters'=>['matches'=>'match']]);
         // use parameters param to use dependency injection to inject match model to controller
 
+        // route to start session for match
+        Route::get('start-session/{match_id}', 'MatchesController@startSession');
+
+        // route to end session for match
+        Route::get('end-session/{match_id}', 'MatchesController@endSession');
+
 
     });
 

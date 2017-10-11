@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Match;
+use App\Services\MatchStatus;
 use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -124,6 +125,32 @@ class MatchesController extends Controller
     {
         $match->delete();
         Session::flash('message', 'Match Deleted Successfully.');
+        return redirect()->back();
+    }
+
+    /**
+     * Start Session Of Match.
+     *
+     * @param  \App\Match  $match
+     * @return \Illuminate\Http\Response
+     */
+    public function startSession($matchId){
+        $match = Match::find($matchId);
+        $match->status = MatchStatus::$ongoing;
+        $match->save();
+        return redirect()->back();
+    }
+
+    /**
+     * End Session Of Match.
+     *
+     * @param  \App\Match  $match
+     * @return \Illuminate\Http\Response
+     */
+    public function endSession($matchId){
+        $match = Match::find($matchId);
+        $match->status = MatchStatus::$ended;
+        $match->save();
         return redirect()->back();
     }
 }
