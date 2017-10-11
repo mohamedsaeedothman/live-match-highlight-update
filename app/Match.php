@@ -31,5 +31,10 @@ class Match extends Model
         return $this->belongsTo('App\Team', 'second_team');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'match_id');
+    }
+
 
 }

@@ -53,6 +53,9 @@
         // route to end session for match
         Route::get('end-session/{match_id}', 'MatchesController@endSession');
 
+        // route to add comment for match
+        Route::post('comments', 'CommentsController@addComment');
+
 
     });
 
