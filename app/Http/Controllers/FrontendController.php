@@ -19,6 +19,7 @@ class FrontendController extends Controller
         //get yestarday matches
         $yesterdayMatches=Match::where('match_date', Carbon::yesterday())->get();
 
+        // pass data to view
     return view('frontend.index')->with([
         'todayMatches'=>$todayMatches,
         'tomorrowMatches' =>$tomorrowMatches,

@@ -56,7 +56,7 @@
 
       @if(isset($match))
 
-        @include('layouts.match.score')
+        @include('backend.layouts.match.score')
         @endif
 
         <div class="form-group">

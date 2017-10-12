@@ -24,7 +24,7 @@ class TeamsController extends Controller
     {
         // retrieve teams with pagination
         $teams = Team::paginate($this->paginationValue);
-        return view('layouts.team.index')->with('teams',$teams);
+        return view('backend.layouts.team.index')->with('teams',$teams);
     }
 
     /**
@@ -35,7 +35,7 @@ class TeamsController extends Controller
     public function create()
     {
         // render create page
-        return view('layouts.team.create');
+        return view('backend.layouts.team.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class TeamsController extends Controller
      */
     public function edit(Team $team)
     {
-        return view('layouts.team.edit')->with('team',$team);
+        return view('backend.layouts.team.edit')->with('team',$team);
     }
 
     /**
@@ -101,6 +101,8 @@ class TeamsController extends Controller
      */
     public function destroy(Team $team)
     {
+        // delete team and flush message success
+
         $team->delete();
         Session::flash('message', 'Team Deleted Successfully.');
         return redirect()->back();

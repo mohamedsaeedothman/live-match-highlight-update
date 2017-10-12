@@ -42,9 +42,9 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini"  >
 <div class="wrapper">
-@include('partials.header')
+@include('backend.partials.header')
 <!-- Left side column. contains the logo and sidebar -->
-@include('partials.sidebar')
+@include('backend.partials.sidebar')
 
 
 <!-- Content Wrapper. Contains page content -->
@@ -69,7 +69,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-@include('partials.footer')
+@include('backend.partials.footer')
 
 <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -299,13 +299,10 @@
 <!-- FastClick -->
 <script src="{{asset('admin/bower_components/fastclick/lib/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('admin/dist/js/demo.js')}}"></script>
 
-<script src="{{asset('../../admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 
 @yield('js')
 

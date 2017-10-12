@@ -19,13 +19,13 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('layouts.index');
+        return view('backend.layouts.index');
     }
 
     public function showLogin()
     {
             // show the login form
-             return View('layouts.login');
+             return View('backend.layouts.login');
     }
 
     public function doLogin(Request $request)

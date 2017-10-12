@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('backend.layouts.master')
 @section('content')
 
     <div class="row">
@@ -26,7 +26,7 @@
                         <tbody>
                         @foreach($moderators as $moderator)
                             <tr>
-                                <td>{!!  $moderator->first_name." ".$moderator->last_name !!}</td>
+                                <td>{!!  $moderator->full_name !!}</td>
                                 <td>{!!  $moderator->email !!}</td>
                                 <td>
                                     <a  href="{!! \Illuminate\Support\Facades\URL::to('dashboard/moderators/'.$moderator->id) !!}" class="btn btn-default btn-rounded btn-condensed btn-sm"><span class="fa fa-search"></span></a>

@@ -26,7 +26,7 @@ class ModeratorsController extends Controller
     {
         // retrieve moderators
         $moderators = User::where('type',$this->role)->paginate(6);
-        return view('layouts.moderator.index')->with('moderators',$moderators);
+        return view('backend.layouts.moderator.index')->with('moderators',$moderators);
     }
 
     /**
@@ -37,7 +37,7 @@ class ModeratorsController extends Controller
     public function create()
     {
         // render create page
-        return view('layouts.moderator.create');
+        return view('backend.layouts.moderator.create');
 
     }
 
@@ -72,7 +72,9 @@ class ModeratorsController extends Controller
      */
     public function show(User $user)
     {
-        return view('layouts.moderator.show')->with('moderator',$user);
+        // view moderator details
+
+        return view('backend.layouts.moderator.show')->with('moderator',$user);
 
     }
 
@@ -84,8 +86,9 @@ class ModeratorsController extends Controller
      */
     public function edit(User $user)
     {
+        // render edit page
 
-        return view('layouts.moderator.edit')->with('moderator',$user);
+        return view('backend.layouts.moderator.edit')->with('moderator',$user);
     }
 
     /**
@@ -120,7 +123,7 @@ class ModeratorsController extends Controller
      */
     public function destroy(User $user)
     {
-
+        // delete user and flush message success
         $user->delete();
         Session::flash('message', 'Moderator Deleted Successfully.');
         return redirect()->back();

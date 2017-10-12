@@ -568,12 +568,6 @@ throw new Error('AdminLTE requires jQuery')
 
     $('body').removeClass(ClassName.holdTransition)
 
-    if (this.options.resetHeight) {
-      $('body, html, ' + Selector.wrapper).css({
-        'height'    : 'auto',
-        'min-height': '100%'
-      })
-    }
 
     if (!this.bindedResize) {
       $(window).resize(function () {
@@ -612,26 +606,13 @@ throw new Error('AdminLTE requires jQuery')
 
     // Set the min-height of the content and sidebar based on
     // the height of the document.
-    if ($('body').hasClass(ClassName.fixed)) {
-      $(Selector.contentWrapper).css('min-height', windowHeight - footerHeight)
-    } else {
+
       var postSetHeight
 
-      if (windowHeight >= sidebarHeight) {
-        $(Selector.contentWrapper).css('min-height', windowHeight - neg)
-        postSetHeight = windowHeight - neg
-      } else {
-        $(Selector.contentWrapper).css('min-height', sidebarHeight)
-        postSetHeight = sidebarHeight
-      }
 
       // Fix for the control sidebar height
-      var $controlSidebar = $(Selector.controlSidebar)
-      if (typeof $controlSidebar !== 'undefined') {
-        if ($controlSidebar.height() > postSetHeight)
-          $(Selector.contentWrapper).css('min-height', $controlSidebar.height())
-      }
-    }
+
+
   }
 
   Layout.prototype.fixSidebar = function () {

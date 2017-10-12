@@ -28,7 +28,7 @@ class MatchesController extends Controller
     {
         // retrieve teams with pagination
         $matches = Match::paginate($this->paginationValue);
-        return view('layouts.match.index')->with('matches',$matches);
+        return view('backend.layouts.match.index')->with('matches',$matches);
     }
 
     /**
@@ -39,7 +39,7 @@ class MatchesController extends Controller
     public function create()
     {
         // render create page
-        return view('layouts.match.create')->with('teams',$this->teams);
+        return view('backend.layouts.match.create')->with('teams',$this->teams);
     }
 
     /**
@@ -72,7 +72,8 @@ class MatchesController extends Controller
      */
     public function show(Match $match)
     {
-        return view('layouts.match.show')->with('match',$match);
+       // view match details
+        return view('backend.layouts.match.show')->with('match',$match);
 
     }
 
@@ -84,7 +85,8 @@ class MatchesController extends Controller
      */
     public function edit(Match $match)
     {
-        return view('layouts.match.edit')->with([
+        // render edit page with match data
+        return view('backend.layouts.match.edit')->with([
             'match'=>$match,
             'teams' => $this->teams
 
@@ -123,6 +125,7 @@ class MatchesController extends Controller
      */
     public function destroy(Match $match)
     {
+        // delete match and flush message success
         $match->delete();
         Session::flash('message', 'Match Deleted Successfully.');
         return redirect()->back();
@@ -134,6 +137,8 @@ class MatchesController extends Controller
      * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
+
+    // function to start session
     public function startSession($matchId){
         $match = Match::find($matchId);
         $match->status = MatchStatus::$ongoing;
@@ -147,6 +152,8 @@ class MatchesController extends Controller
      * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
+    // function to end session
+
     public function endSession($matchId){
         $match = Match::find($matchId);
         $match->status = MatchStatus::$ended;

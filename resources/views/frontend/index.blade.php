@@ -37,7 +37,7 @@
                             <div class="result">
                                 {{$match->first_team_score}} -  {{$match->second_team_score}}
                                 <div style="color: red;">
-                                    {{\App\Services\MatchStatus::getCurrentStatus(\App\Services\MatchStatus::$ended)}}
+                                    {{\App\Services\MatchStatus::getCurrentStatus($match->status)}}
 
                                 </div>
 
@@ -109,7 +109,7 @@
                             <div class="result">
                                 {{$match->first_team_score}} -  {{$match->second_team_score}}
                                 <div style="color: red;">
-                                    {{\App\Services\MatchStatus::getCurrentStatus(\App\Services\MatchStatus::$NoStart)}}
+                                    {{\App\Services\MatchStatus::getCurrentStatus($match->status)}}
 
                                 </div>
 

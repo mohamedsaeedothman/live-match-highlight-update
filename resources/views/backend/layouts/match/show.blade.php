@@ -1,5 +1,8 @@
-@extends('layouts.master')
+@extends('backend.layouts.master')
 @section('content')
+
+
+
     <div class="col-xs-6">
         <p class="lead"></p>
 
@@ -138,7 +141,7 @@
             @endif
     </div>
     <div class="col-xs-12">
-        <h1 style="padding-bottom: 50px">Comments</h1>
+        <h1 style=" padding-bottom: 50px ">Comments</h1>
 
         @foreach($match->comments  as $comment)
    <div class="timeline-item" style="padding-bottom: 50px">

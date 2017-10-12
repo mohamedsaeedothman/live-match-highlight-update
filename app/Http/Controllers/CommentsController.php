@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CommentsController extends Controller
 {
-
+    // function that add comment of match to database and to socket channel
     public function addComment(Request $request){
 
         // form validation
@@ -36,6 +36,7 @@ class CommentsController extends Controller
                 'content' => $comment->content,
             ]
         ];
+        // publish data of comment to channel using redis
         Redis::publish('test-channel', json_encode($data));
         // return back to my view  with success message
         Session::flash('message', 'Comment Added Successfully.');

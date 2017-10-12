@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('backend.layouts.master')
 @section('content')
 
     <div class="row">
@@ -42,6 +42,8 @@
                                     @if($match->status == \App\Services\MatchStatus::$ongoing)
 
                                     <a href="{{\Illuminate\Support\Facades\URL::to('dashboard/end-session/'.$match->id)}}" title="end session" onclick="return confirm('Are you sure you want to End Session For This match?');" id="start_session" class="btn btn-primary btn-rounded btn-condensed btn-sm">End Session<span class="fa fa-hourglass-end"></span></a>
+                                        <a  href="{!! \Illuminate\Support\Facades\URL::to('dashboard/matches/'.$match->id) !!}" class="btn btn-warning btn-rounded btn-condensed btn-sm">Comments available from here</a>
+
                                     @endif
                                 </td>
 
