@@ -36,6 +36,10 @@
 
                             <div class="result">
                                 {{$match->first_team_score}} -  {{$match->second_team_score}}
+                                <div style="color: blue;">
+                                    match time : {{$match->match_time}}
+
+                                </div>
                                 <div style="color: red;">
                                     {{\App\Services\MatchStatus::getCurrentStatus($match->status)}}
 
@@ -72,6 +76,10 @@
 
                             <div class="result">
                                 {{$match->first_team_score}} -  {{$match->second_team_score}}
+                                <div style="color: blue;">
+                                    match time : {{$match->match_time}}
+
+                                </div>
                                 <div style="color: red;">
                                     {{\App\Services\MatchStatus::getCurrentStatus($match->status)}}
 
@@ -108,6 +116,10 @@
 
                             <div class="result">
                                 {{$match->first_team_score}} -  {{$match->second_team_score}}
+                                <div style="color: blue;">
+                                    match time : {{$match->match_time}}
+
+                                </div>
                                 <div style="color: red;">
                                     {{\App\Services\MatchStatus::getCurrentStatus($match->status)}}
 

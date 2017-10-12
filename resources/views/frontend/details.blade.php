@@ -10,7 +10,12 @@
             <a href="{{\Illuminate\Support\Facades\URL::to('matchs/'.$match->id)}}" class="clickable-anchor"></a>
 
             <div class="result">
+                <div style="color: blue;">
+                    match time : {{$match->match_time}}
+
+                </div>
                 {{$match->first_team_score}} -  {{$match->second_team_score}}
+
                 <div style="color: red;">
                     {{\App\Services\MatchStatus::getCurrentStatus($match->status)}}
 
