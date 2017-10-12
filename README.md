@@ -16,8 +16,8 @@
 <li><strong>&nbsp;run [<span style="color: #800000;">php artisan key:generate</span>] to generate app key</strong></li>
 <li><strong> run [<span style="color: #800000;">npm install --production</span>]&nbsp; &nbsp;to install dependencies&nbsp; js package&nbsp;</strong></li>
 <li><strong>navigate to your app and run this command [<span style="color: #800000;">php artisan serve</span>] or configure your virtual host</strong></li>
-<li><strong>navigate to you app and run this command [ <span style="color: #800000;">node socket.js</span>]&nbsp; you may be see error of using port you can kill process and retry again&nbsp;</strong></li>
-</ul>
+<li><strong>navigate to you app and run this command [ <span style="color: #800000;">node socket.js</span>]&nbsp; you maybe see an error of using port you can kill process  with these commands to list processes   [ps aux | grep node] and kill node socket.js process by using this command  [kill -9 [number]  and retry again&nbsp;</strong></li>
+</ul> ps aux | grep node 
 <p><strong><span style="color: #ff0000;">&nbsp;Admin area :</span></strong><strong><span style="color: #0000;">&nbsp;to go to admin area you should write in url&nbsp; /dashboard&nbsp; it navigate to login page you can access as admin by this credentials </span></strong></p>
 <p><strong><span style="color: #0000;">email = <a href="mailto:mohamedsaeedothman@gmail.com">mohamedsaeedothman@gmail.com</a></span></strong></p>
 <p><strong><span style="color: #0000;"> password=123456</span></strong></p>
